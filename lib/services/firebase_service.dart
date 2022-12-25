@@ -9,5 +9,9 @@ Future<List> getPeople() async {
   queryPeople.docs.forEach((element) {
     people.add(element.data());
   });
+
+  // `CircularProgressIndicator`を意図的に確認するための遅延処理
+  await Future.delayed(const Duration(seconds: 3));
+
   return people;
 }
