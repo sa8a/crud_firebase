@@ -8,6 +8,8 @@ class AddNamePage extends StatefulWidget {
 }
 
 class _AddNamePageState extends State<AddNamePage> {
+  TextEditingController nameController = TextEditingController(text: '');
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,10 +18,15 @@ class _AddNamePageState extends State<AddNamePage> {
       ),
       body: Column(
         children: [
-          const TextField(
-            decoration: InputDecoration(hintText: 'Name'),
+          TextField(
+            controller: nameController,
+            decoration: const InputDecoration(hintText: 'Name'),
           ),
-          ElevatedButton(onPressed: () {}, child: const Text('Add')),
+          ElevatedButton(
+              onPressed: () {
+                print(nameController.text);
+              },
+              child: const Text('Add')),
         ],
       ),
     );
