@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
+import 'package:crud_firebase/services/firebase_service.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -35,12 +36,19 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Material App Bar'),
-      ),
-      body: const Center(
-        child: Text('Hello World'),
-      ),
-    );
+        appBar: AppBar(
+          title: const Text('Material App Bar'),
+        ),
+        body: FutureBuilder(
+          future: getPeople(),
+          builder: ((context, snapshot) {
+            return ListView.builder(
+              itemCount: snapshot.data?.length,
+              itemBuilder: (BuildContext context, int index) {
+                return Text(snapshot.data?[index]['name']);
+              },
+            );
+          }),
+        ));
   }
 }
