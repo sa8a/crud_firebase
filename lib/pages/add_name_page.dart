@@ -25,7 +25,11 @@ class _AddNamePageState extends State<AddNamePage> {
           ),
           ElevatedButton(
               onPressed: () async {
-                await addPeople(nameController.text);
+                await addPeople(nameController.text).then(
+                  (_) => {
+                    Navigator.pop(context),
+                  },
+                );
               },
               child: const Text('Add')),
         ],
