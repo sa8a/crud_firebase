@@ -1,3 +1,4 @@
+import 'package:crud_firebase/services/firebase_service.dart';
 import 'package:flutter/material.dart';
 
 class AddNamePage extends StatefulWidget {
@@ -23,8 +24,8 @@ class _AddNamePageState extends State<AddNamePage> {
             decoration: const InputDecoration(hintText: 'Name'),
           ),
           ElevatedButton(
-              onPressed: () {
-                print(nameController.text);
+              onPressed: () async {
+                await addPeople(nameController.text);
               },
               child: const Text('Add')),
         ],
