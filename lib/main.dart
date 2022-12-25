@@ -42,12 +42,16 @@ class _HomeState extends State<Home> {
         body: FutureBuilder(
           future: getPeople(),
           builder: ((context, snapshot) {
-            return ListView.builder(
-              itemCount: snapshot.data?.length,
-              itemBuilder: (BuildContext context, int index) {
-                return Text(snapshot.data?[index]['name']);
-              },
-            );
+            if (snapshot.hasData) {
+              return ListView.builder(
+                itemCount: snapshot.data?.length,
+                itemBuilder: (BuildContext context, int index) {
+                  return Text(snapshot.data?[index]['name']);
+                },
+              );
+            } else {
+              return const Center(child: CircularProgressIndicator());
+            }
           }),
         ));
   }
