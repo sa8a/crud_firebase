@@ -11,7 +11,7 @@ Future<List> getPeople() async {
   });
 
   // `CircularProgressIndicator`を意図的に確認するための遅延処理
-  await Future.delayed(const Duration(seconds: 3));
+  // await Future.delayed(const Duration(seconds: 3));
 
   return people;
 }

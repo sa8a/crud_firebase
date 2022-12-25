@@ -33,8 +33,9 @@ class _HomeState extends State<Home> {
         }),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.pushNamed(context, '/add');
+        onPressed: () async {
+          await Navigator.pushNamed(context, '/add');
+          setState(() {});
         },
         child: const Icon(Icons.add),
       ),
